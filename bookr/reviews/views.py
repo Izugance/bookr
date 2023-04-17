@@ -322,7 +322,6 @@ def book_media(request: HttpRequest, pk: int) -> HttpResponse:
         "form": form,
         "instance": book,
         "model_type": "Book",
-        # "is_file_upload": True,  Not needed with crispy forms.
         "is_file_upload": True,
     }
     return render(request, "reviews/instance_form.html", context)

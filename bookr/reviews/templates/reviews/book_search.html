@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% comment %} {% load static crispy_forms_tags %} {% endcomment %}
 
 {% block stylesheets %}
 <link rel="stylesheet" href="{% static 'reviews/css/book_list.css' %}">
@@ -20,12 +19,6 @@
         <h2>Search for Books</h2>
         <!-- Default method is "get."
 
-        Since we are using the "crispy_forms" app, we have the choice of either
-        a template tag or a filter. We use the template tag below, and it
-        creates a form element with fields (and buttons, if any) and
-        automatically adds a csrf token (only for post requests, since they
-        require one).
-
         P.S: Checkout the "comment" tag.
         -->
         <form>
@@ -33,7 +26,6 @@
             {{ form.as_p }}
             <button type="submit">Search</button>
         </form>
-        {% comment %} {% crispy form %} {% endcomment %}
     </section>
 
     {% if form.is_valid and search_text %}

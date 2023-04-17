@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static profile_tags %}  <!-- Custom. -->
+
+{% block title %}Bookr{% endblock %}
+{% block heading %}Profile{% endblock %}
+{% block content %}
+<section class="content">
+    <style>
+        .flexrow {
+            /* Direct children of flexible containers automatically become
+            flex items. */
+            display: flex;
+            /* Wrapping blocks should form new rows. */
+            flex-wrap: wrap;
+            /* Row gap and column gap. */
+            gap: 10px;
+            border: 2px black;
+            margin: 0px;
+            margin-bottom: 20px;
+        }
+
+        .flexrow > article {
+            flex: 1;
+        }
+        
+        .infocell {
+            box-sizing: border-box;
+            border: thin solid #003554;
+            border-radius: 10px;
+            background-color: white;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .infocell h3 {
+            border-bottom: thin solid #3ea7e4;;
+        }
+
+        .infocell p {
+            margin-bottom: 0px;
+        }
+
+        #books_plot {
+            box-sizing: border-box;
+        }
+    </style>
+    
+    <section class="flexrow" >
+        <article class="infocell" >
+            <h3>Profile</h3>
+            <p>
+                <!-- Recall request is passed automatically to each
+                view's context. -->
+                Username: {{ request.user.username }} <br>
+                Name: {{ request.user.first_name }} {{ request.user.last_name }} <br>
+                Date Joined: {{ request.user.date_joined }} <br>
+                Email: {{ request.user.email }} <br>
+                Last Login: {{ request.user.last_login }} <br>
+            </p>
+        </article>
+        
+        <article class="infocell">
+            <h3>Viewed Books</h3>
+            <p>
+                <!-- Note how viewed_books is accessed. -->
+                {% for book_id, book_title in request.session.viewed_books%}
+                    <a href="/books/{{ book_id }}">{{ book_title }}</a><br>
+                {% empty %}
+                    No recently viewed books found.
+                {% endfor %}
+            </p>
+        </article>
+
+        <article class="infocell">
+            <h3>Search History</h3>
+            <p>
+                {% for search_in, search_text in request.session.search_history %}
+                    <a href="/book-search?search={{ search_text }}&search_in={{ search_in }}">
+                        {{ search_text }} ({{ search_in }})
+                    </a> <br>
+                {% empty %}
+                    No recent searches.    
+                {% endfor %}
+            </p>
+        </article>
+
+        <!-- Using an inclusion tag. -->
+        <article class="infocell">
+            {% book_list request.user.username %}
+        </article>
+
+    </section>
+
+    <!-- Surrounded by a div already, don't need to add again. -->
+    {% autoescape off %}  <!-- Don't escape HTML in variables. -->
+    <section id="books_plot">    
+        {{ books_read_plot }}
+    </section>
+    {% endautoescape %}
+</section>
+{% endblock %}

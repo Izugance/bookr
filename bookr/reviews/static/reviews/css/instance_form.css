@@ -1,0 +1,57 @@
+.content {
+    background-color: white;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.content h2 {
+    margin: 0px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.content form p {
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+.content form button {
+    box-sizing: border-box;
+    width: 100%;
+    border: none;
+    background-color: #3ea7e4;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+.content form button, .content form input {
+    box-sizing: border-box;
+    outline: none
+}
+
+.content form label {
+    display: block;
+    font-size: larger;
+    margin-bottom: 10px;
+}
+
+.content form input {
+    width: 100%;
+    padding: 5px;
+}
+
+.helptext {
+    font-style: italic;
+}
+
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}

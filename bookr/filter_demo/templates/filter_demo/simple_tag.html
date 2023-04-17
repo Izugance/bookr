@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Playing with custom tags</title>
+    </head>
+    <body>
+        <!-- All tags defined in these file are available when loaded. -->
+        {% load simple_tag inclusion_tag %}
+
+        <!-- Using simple tags: \{% tag arg1 arg2 ... %\}. Note the
+        escapes in this comment. -->
+        {% greet_user "Hello" username %} <br>
+        <em>{% contextual_greet_user "Hello" %}</em> <br>
+
+        <!-- Using an inclusion tag. -->
+        <span class="message">You have read the following books till date</span>
+        {% book_list books%}
+    </body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'reviews/css/index.css' %}">
+{% endblock  %}
+
+{% block content %}
+<section class="content">
+    <h3 style="text-align: center">Recent Reviews</h3>
+    <!-- React div. -->
+    <div id="recent_reviews"></div>
+
+    <!-- React, JSX and Babel scripts. -->
+    <script crossorigin
+        src="https://unpkg.com/react@16/umd/react.development.js">
+    </script>
+    <script crossorigin
+        src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+    </script>
+    <script crossorigin
+        src="https://unpkg.com/babel-standalone@6/babel.min.js">
+    </script>
+    <script src="{% static 'reviews/js/recent_reviews.js' %}" type="text/babel"></script>
+    <script type="text/babel">
+        ReactDOM.render(
+            <RecentReviews url="{% url 'api:review-list' %}?limit=6"/>,
+            document.getElementById("recent_reviews")
+        );
+    </script>
+</section>
+
+{% endblock %}

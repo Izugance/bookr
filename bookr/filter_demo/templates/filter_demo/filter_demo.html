@@ -1,0 +1,13 @@
+<!-- All filters defined in "custom_filters" are available when loaded. -->
+{% load custom_filters %}
+
+<!-- Funny django error: Placing the below in a variable template tag
+syntax raises an exception because Django tries to parse it (
+"filter" doesn't exist), even though it's in a comment. You can
+escape this. Check simple_tag.html. -->
+
+<!--Using filters: var|filter:"arg1". Django doesn't support more
+than one arg being passed. A workaround is to pass args in a
+string like "arg1, arg2,...," then write the logic for extracting
+such args in your custom filter function. -->
+<h1>Exploding: {{ names|explode:"," }}</h1>

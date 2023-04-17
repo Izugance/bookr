@@ -1,0 +1,3 @@
+Using a separate test dir for test files.
+Requires a deletion of the default "tests.py" file in the
+Django app dir.

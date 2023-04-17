@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} {% load static crispy_forms_tags %} {% endcomment %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'reviews/css/book_list.css' %}">
+<link rel="stylesheet" href="{% static 'css/book_search.css' %}">
+{% endblock %}
+
+{% block title %}
+    {% if form.is_valid and search_text %}
+        Search Results for `{{ search_text }}`
+    {% else %}
+        Book Search
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <section id="search">
+        <h2>Search for Books</h2>
+        <!-- Default method is "get."
+
+        Since we are using the "crispy_forms" app, we have the choice of either
+        a template tag or a filter. We use the template tag below, and it
+        creates a form element with fields (and buttons, if any) and
+        automatically adds a csrf token (only for post requests, since they
+        require one).
+
+        P.S: Checkout the "comment" tag.
+        -->
+        <form>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Search</button>
+        </form>
+        {% comment %} {% crispy form %} {% endcomment %}
+    </section>
+
+    {% if form.is_valid and search_text %}
+        <section class="content">
+            <h3>Search Results for <em>"{{ search_text }}"</em></h3>
+            <ul class="books_list">
+            {% for book in books %}
+                <a href="{% url 'book_detail' book.id %}">
+                    <li class="book_list_item">
+                        <!-- href="{% url (template tag) "name_of_view_in_urls.py" id/pk}. -->
+                        <span class="info_title">Title: </span>{{ book.title }}
+                        <br>
+                        <span class="info_title">Contributors: </span>
+                        {% for contributor in book.contributors.all %}
+                            <!-- Note "forloop.last." -->
+                            <span class="info_detail">{{ contributor.first_names }} {{ contributor.last_names }}{% if not forloop.last %}, {% endif %}</span>
+                        {% endfor %}
+                    </li>
+                </a>
+                <!-- Note "empty" template tag. -->
+                {% empty %}
+                    <li class="no_results">No results found</li>
+            {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+{% endblock %}

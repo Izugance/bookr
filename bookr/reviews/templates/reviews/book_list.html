@@ -1,0 +1,37 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'reviews/css/book_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="content">
+    <ul class="book_list">
+        {% for item in book_list %}
+            <li class="book_list_item">
+                <p class="book_info">
+                    <span class="info_title">Title: </span> <span class="info_detail title">{{ item.book.title }}</span>
+                    <br>
+                    <span class="info_title">Publisher: </span> <span class="info_detail">{{ item.book.publisher }}</span>
+                    <br>
+                    <span class="info_title">Publication Date: </span> <span class="info_detail">{{ item.book.publication_date }}</span>
+                    <br>
+                    <span class="info_title">Rating: </span> <span class="info_detail info_rating_detail">{{ item.book_rating }}</span>
+                    <br>
+                    <span class="info_title">Number of reviews: </span> <span class="info_detail">{{ item.number_of_reviews }}</span>
+                    <br>
+                    {% if item.book_rating is null %}
+                        <!-- Class because > 1 book. -->
+                        <p class="provide_rating">Provide a rating and write the first review for this book.</p>
+                    {% endif %}
+                </p>
+
+                <section class="book_link">
+                    <a href="/books/{{ item.book.id }}/"><button>Reviews</button></a>
+                </section>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

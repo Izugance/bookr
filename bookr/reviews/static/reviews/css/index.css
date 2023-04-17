@@ -1,0 +1,20 @@
+/* #recent_reviews {
+    background-color: white;
+} */
+
+#book_table {
+    display: table;
+    columns: 3;
+}
+
+#bookRow {
+    background-color: purple;
+}
+
+#prevBtn {
+    background-color: blue;
+}
+
+#nextBtn {
+    float: right;
+}

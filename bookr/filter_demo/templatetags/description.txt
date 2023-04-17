@@ -1,0 +1,2 @@
+This folder includes custom template tags and filters that
+can be loaded project-wide.

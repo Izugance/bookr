@@ -1,0 +1,2 @@
+Root folder for templates. Apps can also contain dirs with the same name for
+namespacing, if necessary.

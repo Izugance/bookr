@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Bookr{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        {% block stylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            <!-- Block logo. -->
+            {% block brand %}<img src="{% static 'logo.png' %}">{% endblock %}
+            <!-- Navbar toggler: <button></button> -->
+            
+            <form id="nav_form" action="{% url 'book_search' %}">
+                <input id="nav_search" type="text" name="search" placeholder="Search for books">
+                {% comment %} <input id="nav_submit" type="submit" value="Search"> {% endcomment %}
+                <button id="nav_submit" type="submit"><span id="search_symbol" class="material-symbols-outlined">Search</span></button>
+            </form>
+            {% comment %} <button><span class="material-symbols-rounded">menu</span></button> {% endcomment %}
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index_view' %}">Home</a></li>
+                    <li><a href="{% url 'book_list' %}">Books</a></li>
+                    <!-- Should depend on "is_authenticated()." -->
+                    {% if user.is_authenticated %}
+                        <li><a href="/accounts/logout">Logout</a></li>
+                    {% else %}
+                        <li><a href="/accounts/login">Login</a></li>
+                    {% endif %}
+                    <!-- user -->
+                    {% if user.is_authenticated %}
+                        {% comment %} <a id="user" href="/accounts/profile">User: {{ user }}</a>             {% endcomment %}
+                        <li id="user_profile">
+                            <a href="/accounts/profile">Profile</a>
+                            </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+
+        {% for message in messages %}
+            <!-- Django and CSS messages are the same, except for
+            'alert-danger' == django's 'error.' -->
+            <!-- <div class="alert alert-{% if message.level_tag == 'error' %}danger{% else %}{{ message.level_tag }}{% endif %}" role="alert"> -->
+                <!-- {% if message.level_tag == 'error' %}danger{% else %}{{ message.level_tag }}{% endif %} -->
+            <div class="alert">
+                {{ message }}
+            </div>            
+        {% endfor %}
+        
+        {% block content %}
+        <!-- NOTE: Each custom template's content should set a margin
+        between itself and the footer. -->
+        <div class="content">
+            <h1>Welcome to Bookr!</h1>
+        </div>
+        {% endblock %}
+
+        <footer>
+            Book reviews and everything in-between. <br>
+            &copy;Courtesy of Izu, 2023.
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+.content {
+    background-color: white;
+    /* margin-left: 40px;
+    margin-right: 40px;  */
+    padding: 20px;
+}
+
+.content h3 {
+    margin-bottom: 10px;
+}
+
+.content p, .content ul {
+    margin: 0px;
+    margin-top: 10px;
+}
+
+#title {
+    font-style: italic;
+}
+
+.info_title {
+    color: #3ea7e4;
+    vertical-align: top;
+}
+
+#detail_area {
+    margin-bottom: 10px;
+}
+
+#book_info a {
+    color: #003554;
+}
+
+#book_info #download_link {
+    color: green;
+}
+
+#book_info #download_link:hover {
+    text-decoration: underline;
+}
+
+#review_media_update {
+    padding: 10px 0px;
+}
+
+#review_media_update a button {
+    background-color: #3ea7e4;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#review_media_update a button:hover {
+    cursor: pointer;
+}
+
+#review_btn {
+    margin-right: 5px;
+}

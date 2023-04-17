@@ -1,0 +1,66 @@
+.content {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.content ul {
+    list-style-type: none;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding: 0px;
+}
+
+.book_info {
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.book_list_item {
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.book_list_item:hover {
+    border: thin solid #3ea7e4;
+    box-shadow: 1px 1px 5px#3ea7e4, 1px 1px 5px#3ea7e4;
+}
+
+.info_title {
+    font-weight: 550;
+    color: #003554
+}
+
+.info_detail {
+    color: #3ea7e4;
+}
+
+.book_link {
+    margin: 0px;
+    border-radius: 5px;
+    padding: 0px;
+}
+
+.book_link a button {
+    margin: 0px;
+    background-color: #3ea7e4;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.book_link a button:hover {
+    cursor: pointer;
+}
+
+
+.title, .provide_rating {
+    font-style: italic;
+}
+
+.provide_rating {
+    color: green;
+}

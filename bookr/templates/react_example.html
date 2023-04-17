@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Learn React</title>
+    </head>
+    <body>
+        <!-- "div" React should render to. -->
+        <div id="react_container"></div>
+        <!-- Using React from a CDN. The following must be placed here
+        in case React components need data from elements.  (Requires
+        internet connection. Also, better would be to use npm for
+        larger projects.)
+
+        Using django to generate the templates and then React to render
+        certain aspects is called progressive enhancement.
+        
+        Can't use "script" as a void element. -->
+        <script crossorigin
+            src="https://unpkg.com/react@16/umd/react.development.js">
+        </script>
+        <script crossorigin
+            src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+        </script>
+        <!-- Need Babel for transpiling between different versions of
+            JS. Makes the use of JSX work. -->
+        <script crossorigin
+            src="https://unpkg.com/babel-standalone@6/babel.min.js">
+        </script>
+        <!-- Without Babel: -->
+        {% comment %}
+            <script src="{% static 'react_example1.js' %}"></script>
+        {% endcomment %}
+        <!-- With Babel (required): -->
+        <script src="{% static 'react_example.js' %}" type="text/babel"></script>
+        <script type="text/babel">
+            // Filter to avoid invalid js if "name" has double quotes.
+            let name = "{{ name|escapejs }}";
+            let target = {{ target }};
+            // Passing properties through the react component.
+            {% comment %} ReactDOM.render(
+                // JSX escapes.
+                <ClickCounter name={ name } target={ target }/>,
+                document.getElementById("react_container")
+            ); {% endcomment %}
+            ReactDOM.render(
+                <BookDisplay url="{% url 'api:book-list' %}"/>,
+                document.getElementById("react_container")
+            );
+            /* API router + viewset => patterns with
+            name="<modelname_lower>-list" and
+            name="<modelname_lower>-detail" are made. Hence, "api:
+            book-list" works. */
+        </script>
+    <!-- Footnote: You can use Django's "verbatim" template tag to 
+    avoid Django's interference with what's within, since other 
+    frameworks can use a similar escape syntax as Django's. -->
+    </body>
+</html>

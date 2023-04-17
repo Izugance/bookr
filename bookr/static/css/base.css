@@ -1,0 +1,135 @@
+body {
+    margin: 0px;
+    font-size: small;
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    background-color: #dae0e6;
+    color: #003554;
+}
+
+a {
+    text-decoration: none;
+    color: #3ea7e4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
+}
+
+header {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 10px;
+    margin: 0px;
+    background-color: #003554;
+}
+
+#nav_form {
+    display: inline-flex;
+    justify-content: space-between;
+    top: 24px;
+    width: 40%;
+    height: 30px;
+    border-radius: 50px;
+    background-color: white;
+}
+
+#nav_search, #nav_submit {
+    display: flex;
+    /* Include padding and border in width calculations. */
+    box-sizing: border-box;
+    height: 100%;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+}
+
+#nav_search {
+    background-color: #dae0e6;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 10px;
+    width: 85%;
+}
+
+#nav_search:hover {
+    background-color: white;
+}
+
+#nav_submit {
+    /* Justify along horiz axis.*/
+    justify-content: center;
+    /* Align along vertical axis. */
+    align-items: center;
+    overflow: hidden;
+    width: 15%;
+    color: white;
+    font-weight: bold;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: #3ea7e4;
+    /* background-color: #4285f4; */
+}
+
+#nav_submit:hover {
+    cursor: pointer;
+}
+
+header > img {
+    width: 140px;
+    height: 70px;
+}
+
+header nav {
+    display: inline-flex;
+    width: 30%;
+}
+
+header nav ul {
+    display: inline-flex;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding: 0px;
+    overflow: hidden;
+    width: 100%;
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 5%;
+}
+
+#user_profile {
+    margin-right: 0px;
+}
+
+header nav a {
+    color: #ffffff;
+    font-size: larger;
+    font-weight: Bolder;
+}
+
+header nav a:hover {
+    color: #dae0e6;
+}
+
+/* #user {
+    color: #3ea7e4;
+} */
+
+.alert {
+    margin: 0px;
+}
+
+.content {
+    margin: 20px;
+}
+
+footer {
+    /* margin-top: 4px; */
+    padding-bottom: 5px;
+    text-align: center;
+}

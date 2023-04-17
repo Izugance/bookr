@@ -1,0 +1,49 @@
+#search {
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#search h2, .content h3{
+    text-align: center;
+}
+
+.content h3 {
+    margin-bottom: 10px;
+}
+
+#search form {
+    text-align: center;
+}
+
+#search form input {
+    box-sizing: border-box;
+    width: 80%;
+    padding: 5px 10px;
+    outline: none;
+    border: thin solid #003554;
+    border-radius: 10px;
+    font-size: larger;
+}
+
+#search form button {
+    background-color: #3ea7e4;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+#search form button:hover {
+    cursor: pointer;
+}
+
+.book_list_item:hover {
+    border: thin solid #3ea7e4;
+    box-shadow: 1px 1px 5px #3ea7e4;
+}

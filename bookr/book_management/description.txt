@@ -1,0 +1,1 @@
+App for the exploration of class-based views.

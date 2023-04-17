@@ -1,0 +1,75 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'reviews/css/book_detail.css' %}">
+{% endblock  %}
+
+{% block content %}
+<section class="content">
+    <section id="detail_area">
+        <h3>Book details</h3>
+        <!-- NOTE "cover.url." -->
+        {% if book.cover %}
+            <img src="{{ book.cover.url }}">
+            <br>
+        {% endif %}
+        <section id="book_info">
+            <span class="info_title">Title:</span> <span id="title">{{ book.title }}</span>
+            <br>
+            <span class="info_title">Publisher:</span> <span>{{ book.publisher }}</span>
+            <br>
+            <span class="info_title">Publication Date:</span> <span>{{ book.publication_date }}</span>
+            <br>
+            <!-- Note "sample.url" from model "FileField" attr. -->
+            {% if book.sample %}
+                <span class="info_title">Sample: </span><a id="download_link" href="{{ book.sample.url }}">Download</a>
+                <br>
+            {% endif %}
+            {% if not reviews %}
+                {% if user.is_authenticated %}
+                    <hr>
+                    <h3>Be the first to write a review.</h3>
+                {% endif %}
+            {% else %}
+                <span class="info_title">Overall Rating:</span> <span class="book_rating">{{ book_rating }}</span>
+                <br>
+        </section>
+    </section>
+        <hr>
+        <section id="review_comments">
+            <h3>Review Comments</h3>
+            <ul>
+            {% for review in reviews %}
+                <li class="list-group-item">
+                    <section class="review_info">
+                        <span class="info_title">Comment: </span> <span>{{ review.content }}</span>
+                        <br>
+                        <span class="info_title">Created on: </span><span>{{ review.date_created }}</span>
+                        <br>
+                        <span class="info_title">Modified on: </span><span>{{ review.date_edited }}</span>
+                        <br>
+                        <span class="info_title">Rating: </span><span class="book_rating">{{ review.rating }}</span>
+                        <br>
+                        <!-- Recall "creator" is a User object. -->
+                        <span class="info_title">Creator: </span><span>{{ review.creator.username }}</span>
+                        <br>
+                        {% if user.is_staff or review.creator.id == user.id %}
+                            <!-- URL 'url name' args. -->
+                            <a href="{% url 'review_edit' book.pk review.pk %}">Edit Review</a>
+                        {% endif %}
+                    </section>
+            </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        </section>
+
+        {% if user.is_authenticated %}
+        <section id="review_media_update">
+            <a  href="{% url 'review_create' book.pk %}"><button id="review_btn">Add Review</button></a>
+            <a href="{% url 'book_media' book.pk %}"><button>Media</button></a>
+        </section>
+        {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,6 @@
+Root dir for all static files. Apps also contain dirs with the same name (if
+needed) for namespacing.
+
+You really shouldn't use Django for static asset rendering as it takes Django
+away from its main task---handling the request--response exchange. (Though hell
+doesn't break loose if you do that, as we have here.)

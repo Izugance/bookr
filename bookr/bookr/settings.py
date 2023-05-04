@@ -76,8 +76,12 @@ class Dev(Configuration):
     # with data being shared across.
     SITE_ID = 1  # Random num.
 
+    # Redirect on login to the book list page.
+    LOGIN_REDIRECT_URL = "/"
+
     # IPs to display the django debug toolbar.
     INTERNAL_IPS = ["127.0.0.1"]
+
     # Middleware objects wrap the whole request-response cycle,
     # injecting useful attributes into both request and response
     # objects.

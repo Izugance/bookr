@@ -37,8 +37,6 @@ header {
 }
 
 #nav_search, #nav_submit {
-    /* Include padding and border in width calculations. */
-    box-sizing: border-box;
     height: 100%;
     border-radius: 50px;
     border: none;

@@ -1,5 +1,4 @@
 .content {
-    box-sizing: border-box;
     margin-top: 30px;
     margin-bottom: 20px;
     /* box-shadow: horiz-offset vert-offset <blur> <spread color>;
@@ -27,7 +26,6 @@
 }
 
 .content form input{
-    box-sizing: border-box;
     height: 30px;
     outline: none;
 }

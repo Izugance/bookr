@@ -19,7 +19,6 @@
 }
 
 .content form button {
-    box-sizing: border-box;
     width: 100%;
     border: none;
     background-color: #3ea7e4;
@@ -30,7 +29,6 @@
 }
 
 .content form button, .content form input {
-    box-sizing: border-box;
     outline: none
 }
 
@@ -50,7 +48,6 @@
 }
 
 textarea {
-    box-sizing: border-box;
     width: 100%;
     padding: 10px;
     outline: none;

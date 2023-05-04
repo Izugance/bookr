@@ -21,7 +21,6 @@
 }
 
 #search form input {
-    box-sizing: border-box;
     width: 80%;
     padding: 5px 10px;
     outline: none;
